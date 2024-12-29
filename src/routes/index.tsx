@@ -1,27 +1,19 @@
-import { useRoutes } from "react-router-dom";
-import { Home, ProductsFromCategory, SingleProduct } from "../pages";
-import Header from "../components/header/Header";
+import WhichOne from "../pages/which_one";
+import { useWhichOne } from "../context";
+import { which_one } from "../utils";
+import ProductsRoutes from "./Products";
 
 function CustomRoutes() {
-  return (
-    <main>
-      <Header />
-      {useRoutes([
-        {
-          path: "/",
-          element: <Home />,
-        },
-        {
-          path: "/category/:category",
-          element: <ProductsFromCategory />,
-        },
-        {
-          path: "/:id",
-          element: <SingleProduct />,
-        },
-      ])}
-    </main>
-  );
+  const { whichOne } = useWhichOne();
+  if (whichOne) {
+    if (whichOne === which_one.product) {
+      return <ProductsRoutes />;
+    } else {
+      alert("yesss..");
+    }
+  } else {
+    return <WhichOne />;
+  }
 }
 
 export default CustomRoutes;

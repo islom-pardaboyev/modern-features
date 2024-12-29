@@ -1,4 +1,4 @@
-import { api } from ".";
+import { api } from "../";
 
 export const getSearchedProduct = api.injectEndpoints({
     endpoints: (build) => ({

@@ -4,12 +4,15 @@ import App from "./App.tsx";
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import { store } from "./store/index.tsx";
-import 'ldrs/ring'
+import "ldrs/ring";
+import { WhichOneProvider } from "./context/index.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <BrowserRouter>
     <Provider store={store}>
-      <App />
+      <WhichOneProvider>
+        <App />
+      </WhichOneProvider>
     </Provider>
   </BrowserRouter>
 );

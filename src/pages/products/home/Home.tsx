@@ -1,11 +1,12 @@
-import HeroImg from "../../assets/images/home.webp";
+import HeroImg from "../../../assets/images/home.webp";
 import { Button, Pagination } from "antd";
-import { useGetProductsQuery } from "../../store/api/get-products-api";
-import { useGetCategoryQuery } from "../../store/api/get-category-api";
-import { categoryContext, Products } from "../../utils";
+import { categoryContext, Products } from "../../../utils";
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import ProductCard from "../../components/productCart/ProductCard";
+import ProductCard from "../../../components/projects/productCart/ProductCard";
+import { useGetProductsQuery } from "../../../store/api/products/get-products-api";
+import { useGetCategoryQuery } from "../../../store/api/products/get-category-api";
+
 
 function Home() {
   const limit = 10;
@@ -24,7 +25,6 @@ function Home() {
     data: categoryContext[];
     isLoading: boolean;
   };
-  console.log(products);
   return (
     <section>
       <div className="relative ">

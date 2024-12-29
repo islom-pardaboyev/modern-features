@@ -1,15 +1,9 @@
+import { Check, ReceiptIcon, ShoppingBasket } from "lucide-react";
+
 export const navbarContext = [
   {
-    name: "Products",
+    name: "Home",
     link: "/",
-  },
-  {
-    name: "Todo",
-    link: "/todo",
-  },
-  {
-    name: "Reciept",
-    link: "/reciept",
   },
 ];
 
@@ -28,7 +22,7 @@ export type SingleProductContext = {
     depth: string;
     height: string;
     width: string;
-  },
+  };
   discountPercentage: number;
   id: number;
   images: string[];
@@ -49,11 +43,35 @@ export type SingleProductContext = {
   thumbnail: string;
   title: string;
   warrantyInformation: string;
-  weight: number
-}
+  weight: number;
+};
 
 export type Products = {
   products: SingleProductContext[];
   total: number;
-  limit: number
+  limit: number;
+};
+
+export const WhichOneContext = [
+  {
+    name: "product",
+    desc: "lorem ipsum dolor sit amet, consectetur adip",
+    icon: <ShoppingBasket className="size-20" />,
+  },
+  {
+    name: "reciept",
+    desc: "lorem ipsum dolor sit amet, consectetur adip",
+    icon: <ReceiptIcon className="size-20"  />,
+  },
+  {
+    name: "todo",
+    desc: "lorem ipsum dolor sit amet, consectetur adip",
+    icon: <Check className="size-20" />,
+  },
+];
+
+export enum which_one  {
+  product = "product",
+  reciept = "reciept",
+  todo = "todo",
 }

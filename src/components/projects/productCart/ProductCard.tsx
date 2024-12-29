@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { SingleProductContext } from "../../utils";
+import { SingleProductContext } from "../../../utils";
 
 interface ProductCardProps {
   data: SingleProductContext;
@@ -37,7 +37,7 @@ function ProductCard({ data, isLoading }: ProductCardProps) {
             <h1 className="font-semibold line-clamp-1">{data.title}</h1>
             <p className="text-zinc-500">{data.category}</p>
           </div>
-          <p className="font-bold">${data.price}</p>
+          <p className="font-bold">${data.price.toLocaleString()}</p>
         </div>
       </div>
     );

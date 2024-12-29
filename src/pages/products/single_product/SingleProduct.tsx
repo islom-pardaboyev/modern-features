@@ -1,28 +1,27 @@
 import { useParams } from "react-router-dom";
-import { useGetProductByIDQuery } from "../../store/api/get-product-bg-id-api";
-import { SingleProductContext } from "../../utils";
+import { SingleProductContext } from "../../../utils";
 import { useEffect, useState } from "react";
 import { Rate } from "antd";
 import {
   Avatar,
   AvatarFallback,
   AvatarImage,
-} from "../../components/ui/avatar";
+} from "../../../components/ui/avatar";
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-} from "../../components/ui/carousel";
-import { Card, CardContent } from "../../components/ui/card";
+} from "../../../components/ui/carousel";
+import { Card, CardContent } from "../../../components/ui/card";
 import { pulsar } from "ldrs";
+import { useGetProductByIDQuery } from "../../../store/api/products/get-product-bg-id-api";
 
 pulsar.register();
 
 function SingleProduct() {
   const { id } = useParams();
-  console.log(id);
   const { data, isLoading } = useGetProductByIDQuery(id) as {
     data: SingleProductContext;
     isLoading: boolean;
@@ -33,7 +32,6 @@ function SingleProduct() {
       setImageUrl(data.images[0]);
     }
   }, [data]);
-  console.log(data);
   return (
     <section className="mt-10 container">
       {isLoading && (
@@ -119,9 +117,9 @@ function SingleProduct() {
       {data && (
         <div
           id="reviews"
-          className="mt-20 h-screen scroll-mt-10 flex flex-col gap-3"
+          className="h-screen mt-10 scroll-mt-10 flex flex-col gap-3"
         >
-          <h1 className="text-center font-semibold text-3xl">Reviews</h1>
+          <h1 className="text-center font-semibold my-5 text-3xl">Reviews</h1>
           <div className="grid grid-cols-3 gap-4">
             {data &&
               data.reviews.map((review, inx) => (

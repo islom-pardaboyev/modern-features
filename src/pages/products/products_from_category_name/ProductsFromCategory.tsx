@@ -1,8 +1,9 @@
 import { useNavigate, useParams } from "react-router-dom";
-import { useGetProductsByCategoryNameQuery } from "../../store/api/get-products-by-category-name-api";
 import { MoveLeft } from "lucide-react";
-import { Products } from "../../utils";
-import ProductCard from "../../components/productCart/ProductCard";
+import { Products } from "../../../utils";
+import ProductCard from "../../../components/projects/productCart/ProductCard";
+import { useGetProductsByCategoryNameQuery } from "../../../store/api/products/get-products-by-category-name-api";
+
 
 function ProductsFromCategory() {
   const navigate = useNavigate();
@@ -10,7 +11,6 @@ function ProductsFromCategory() {
   const { data, isLoading } = useGetProductsByCategoryNameQuery(
     category?.split(" ").join("-").toLowerCase()
   ) as { data: Products; isLoading: boolean };
-  console.log(data);
   return (
     <section className="container">
       <div

@@ -1,4 +1,4 @@
-import { api } from ".";
+import { api } from "../";
 
 export const getProductsApi = api.injectEndpoints({
   endpoints: (build) => ({

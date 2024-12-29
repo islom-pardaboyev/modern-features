@@ -1,7 +1,8 @@
 import CustomRoutes from "./routes";
 
+
 function App() {
-  return <CustomRoutes />;
+  return <CustomRoutes/>;
 }
 
 export default App;
