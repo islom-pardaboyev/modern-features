@@ -1,5 +1,5 @@
-import { Check, ReceiptIcon, ShoppingBasket } from "lucide-react";
-
+import { Check, Quote, ReceiptIcon, ShoppingBasket } from "lucide-react";
+// products start
 export const navbarContext = [
   {
     name: "Home",
@@ -59,19 +59,48 @@ export const WhichOneContext = [
     icon: <ShoppingBasket className="size-20" />,
   },
   {
-    name: "reciept",
+    name: "recipes",
     desc: "lorem ipsum dolor sit amet, consectetur adip",
     icon: <ReceiptIcon className="size-20"  />,
   },
   {
-    name: "todo",
+    name: "quote",
     desc: "lorem ipsum dolor sit amet, consectetur adip",
-    icon: <Check className="size-20" />,
+    icon: <Quote className="size-20" />,
   },
 ];
 
 export enum which_one  {
   product = "product",
-  reciept = "reciept",
-  todo = "todo",
+  recipes = "recipes",
+  quote = "quote",
 }
+// products end
+
+// recipes start
+export type SingpleRecipe = {
+  caloriesPerServing: number
+  cookTimeMinutes: number
+  cuisine: string
+  difficulty: string
+  id: number
+  image: string
+  ingredients: string[]
+  instructions: string[]
+  mealType: string;
+  name: string
+  prepTimeMinutes: number
+  rating: number;
+  reviewCount: number
+  servings: number
+  tags: string[];
+  userId: number
+}
+
+export type RecipesDataContext = {
+  limit: number;
+  recipes: SingpleRecipe[]
+  skip: number;
+  total: number;
+}
+// recipes end

@@ -1,6 +1,5 @@
 import { useParams } from "react-router-dom";
 import { SingleProductContext } from "../../../utils";
-import { useEffect, useState } from "react";
 import { Rate } from "antd";
 import {
   Avatar,
@@ -26,18 +25,12 @@ function SingleProduct() {
     data: SingleProductContext;
     isLoading: boolean;
   };
-  const [imageUrl, setImageUrl] = useState<string>();
-  useEffect(() => {
-    if (data) {
-      setImageUrl(data.images[0]);
-    }
-  }, [data]);
   return (
     <section className="mt-10 container">
       {isLoading && (
-        <section className="absolute top-0 left-0 w-full h-full flex items-center justify-center">
+        <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center">
           <l-pulsar size="40" speed="1.75" color="black"></l-pulsar>
-        </section>
+        </div>
       )}
       {data && (
         <div className="grid grid-cols-12 gap-5">
@@ -45,9 +38,7 @@ function SingleProduct() {
             <div className="col-span-1">
               {data.images.map((image, inx) => (
                 <img
-                  className={`h-[100px] w-full object-contain cursor-pointer ${
-                    imageUrl === image && "bg-zinc-200"
-                  }`}
+                  className="h-[100px] w-full object-contain cursor-pointer"
                   src={image}
                   key={inx}
                 />

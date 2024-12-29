@@ -25,7 +25,7 @@ function ProductCard({ data, isLoading }: ProductCardProps) {
     return (
       <div
         onClick={() => navigate(`/${data.id}`)}
-        className="border hover:opacity-80 duration-3000 rounded-md"
+        className="border hover:opacity-80 cursor-pointer duration-3000 rounded-md"
       >
         <img
           src={data.images[0]}

@@ -27,7 +27,7 @@ function Header() {
     navigate(`/${id}`)
   };
   return (
-    <header className="border-b py-2">
+    <header className="border-b py-3">
       <div className="container  flex items-center justify-between ">
         <p onClick={() => navigate("/")} className="font-bold cursor-pointer text-3xl">
           Logo.
