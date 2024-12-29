@@ -1,13 +1,13 @@
 import { useNavigate } from "react-router-dom";
-import { SingleProduct } from "../../utils";
+import { SingleProductContext } from "../../utils";
 
 interface ProductCardProps {
-  data: SingleProduct;
+  data: SingleProductContext;
   isLoading: boolean;
 }
 
 function ProductCard({ data, isLoading }: ProductCardProps) {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   if (isLoading) {
     return (
       <div className="border hover:opacity-80 duration-3000 rounded-md animate-pulse">
@@ -23,7 +23,10 @@ function ProductCard({ data, isLoading }: ProductCardProps) {
     );
   } else {
     return (
-      <div onClick={() => navigate(`/${data.id}`)} className="border hover:opacity-80 duration-3000 rounded-md">
+      <div
+        onClick={() => navigate(`/${data.id}`)}
+        className="border hover:opacity-80 duration-3000 rounded-md"
+      >
         <img
           src={data.images[0]}
           className="size-96 border-b drop-shadow-lg object-contain"
