@@ -1,4 +1,4 @@
-import { Check, Quote, ReceiptIcon, ShoppingBasket } from "lucide-react";
+import { Quote, ReceiptIcon, ShoppingBasket } from "lucide-react";
 // products start
 export const navbarContext = [
   {
