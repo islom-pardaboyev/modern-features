@@ -9,7 +9,6 @@ function SingleRecipe() {
     data: SingpleRecipe;
     isLoading: boolean;
   };
-  console.log(data);
   return (
     <section className="w-full h-screen bg-gradient-to-b flex overflow-x-auto items-center justify-center from-yellow-400 to-orange-500">
       {isLoading && (

